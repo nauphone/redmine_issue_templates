@@ -7,8 +7,7 @@ class IssueTemplatesIssuesHook < Redmine::Hook::ViewListener
   def view_layouts_base_html_head(context = {})
     o = stylesheet_link_tag('issue_templates', :plugin => 'redmine_issue_templates')
     ctrl = context[:controller]
-    if (ctrl.class.name == 'IssuesController' and ctrl.action_name != 'index' and not context[:request].params.include? "copy_from") 
-         or (ctrl.class.name == 'IssueTemplatesController') or (ctrl.class.name == 'GlobalIssueTemplatesController')
+    if (ctrl.class.name == 'IssuesController' and ctrl.action_name != 'index' and not context[:request].params.include? "copy_from") or (ctrl.class.name == 'IssueTemplatesController') or (ctrl.class.name == 'GlobalIssueTemplatesController')
       o << javascript_include_tag('issue_templates', :plugin => 'redmine_issue_templates')
     end      
     return o
